@@ -1,0 +1,83 @@
+{
+	// SIMULATION PARAMETERS
+	"burnin" : 0,
+	"endDay" : 14600,
+	
+	// Number of days to move forward in a single timestep
+	"deltaT" : 0.1,                
+	
+	// How often to print to out.timeseries
+	"printStep" : 10,
+	
+	"tipSamplingRate" : 0.0002,						// in samples per deme per day
+	"tipSamplesPerDeme" : 1000,
+	"tipSamplingProportional" : true,				// whether to sample proportional to prevalance
+	"treeProportion" : 0.1,							// proportion of tips to use in tree reconstruction
+	"diversitySamplingCount" : 1000,					// how many samples to draw to calculate diversity, Ne*tau, serial interval
+	"netauWindow" : 100,								// window in days to calculate Ne*tau		
+	"repeatSim" : true,								// repeat simulation until endDay is reached?
+	"immunityReconstruction" : false,				// whether to print immunity reconstruction to out.immunity
+	"yearsFromMK" : 1.0,
+	"pcaSamples" : false,							// whether to rotate and flip virus tree
+	"reducedOutput" : false,						// whether to output only out.summary and out.timeseries
+	"detailedOutput" : false,						// whether to output out.hosts and out.viruses files enabling checkpointing
+	"restartFromCheckpoint" : false,				// whether to load population from out.hosts
+	"tmrcaLimit" : 10.0,
+
+	// metapopulation parameters
+	"demeCount" : 3,
+	"demeNames" : ["north","tropics","south"],
+	"initialNs" : [15000000,15000000,15000000],	
+
+	// host parameters
+	"birthRate" : [0.000091,0.000091,0.000091],				// in births per individual per day, 1/30 "years" : 0.000091
+	"deathRate" : [0.000091,0.000091,0.000091],				// in deaths per individual per day, 1/30 years = 0.000091
+	"swapDemography" : true,				// whether to keep overall population size constant
+	"startAtEquilibriumInfected": [false, false, false],
+	"startAtEquilibriumImmune": [false, false, false],
+	
+	// epidemiological parameters
+	"initialIs" : [0,600,0],							// in individuals
+	"initialDeme" : 1,						// index of deme where infection starts, 0..n-1
+	"initialPrR" : 0.7, 					// as proportion of population
+	"beta" : 0.36, // 0.3					// in contacts per individual per day
+	"nu" : 0.2, //0.2						// in recoveries per individual per day
+	"betweenDemePro" : 0.001,				// relative to within-deme beta	
+
+	// transcendental immunity
+	"transcendental" : false,
+	"immunityLoss" : 0.01,					// in R->S per individual per day
+	"initialPrT" : 0.1,
+
+	// seasonal betas
+	"demeBaselines" : [1,1,1],
+	"demeAmplitudes" : [0.10,0.0,0.10],
+	"demeOffsets" : [0,0,0.5],				// relative to the year
+
+	// phenotype parameters
+	"phenotypeSpace" : "geometric",			// options include: "geometric", "geometric3d", "geometric10d"
+	"muPhenotype" : 0.001, 					// in mutations per individual per day
+
+	// parameters specific to GeometricPhenotype
+	"smithConversion" : 0.07,					// multiplier to distance to give cross-immunity
+	"homologousImmunity" : 1.0,				// immunity raised to antigenically identical virus
+	"initialTraitA" : -4,	
+	"meanStep" : 0.6, 
+	"sdStep" : 0.3, 
+	"mut2D" : true,						// whether to mutate in a full 360 degree arc
+
+	// vaccination parameters
+	"vaccinate" : false,					// whether to include vaccination
+	"vaccineStep" : 365.0,					// how many days between re-calculation of ideal vaccine
+	"vaccineSD" : 0.0,						// SD of error relative to ideal vaccine
+	"vaccineImmuneBreadth" : 1.0,			// relative immune protection provided by vaccine relative to infection:
+																// 1.0 -> same protection, 2.0 -> double protection (risk halved)
+	"vaccinationRate" : [0,0.0001,0],								// Average time between vaccinations for 0.003 is a little less than once a year
+																// : (1/0.003) = 333.3 days
+    "deployDay": 134.33333333333334, 
+    "vaccineWindow": 60, 
+    "vaccineLag": 133.33333333333334, 
+	// Periodic sampling of hosts into SQLite db
+	"sampleStep" : 36.5,
+	"sampleHostsPerDeme" : 10000
+}
