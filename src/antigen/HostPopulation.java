@@ -469,7 +469,8 @@ public class HostPopulation {
 
 		// each infected makes I->S contacts on a per-day rate of beta * S/N
 		// double totalContactRate = hp.getI() * getPrS() * params.beta * params.betweenDemePro * params.demeBaselines[deme] * params.deltaT;//makes migration aseasonal
-		double totalContactRate = hp.getI() * getPrS() * params.beta * params.betweenDemePro * getSeasonality() * params.deltaT;
+		// double totalContactRate = hp.getI() * getPrS() * params.beta * params.betweenDemePro * getSeasonality() * params.deltaT;
+		double totalContactRate = hp.getI() * getPrS() * params.beta * params.betweenDemePro * params.contactMatrix[hp.deme][this.deme] *  getSeasonality() * params.deltaT;
 
 		int contacts = Random.nextPoisson(totalContactRate);
 		for (int i = 0; i < contacts; i++) {

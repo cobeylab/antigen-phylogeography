@@ -44,6 +44,7 @@ public class Parameters {
 	public Double beta; // 0.3					// in contacts per individual per day
 	public Double nu; //0.2						// in recoveries per individual per day
 	public Double betweenDemePro;				// relative to within-deme beta	
+	public Double[][] contactMatrix;            // relative to betweenDemePro
 	
 	// transcendental immunity
 	public Boolean transcendental;

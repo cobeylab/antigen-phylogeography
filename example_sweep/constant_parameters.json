@@ -43,6 +43,7 @@
 	"beta" : 0.36, // 0.3					// in contacts per individual per day
 	"nu" : 0.2, //0.2						// in recoveries per individual per day
 	"betweenDemePro" : 0.001,				// relative to within-deme beta	
+	"contactMatrix": [[1,1,1],[1,1,1][1,1,1]], // relative to betweenDemePro
 
 	// transcendental immunity
 	"transcendental" : false,
